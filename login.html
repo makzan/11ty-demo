@@ -4,7 +4,18 @@ layout: layout
 
 Please login to access gated content.
 
-<form action="/.netlify/functions/login" method="POST">
-  <input type="text" name="accesscode">
+<form id="login" action="/.netlify/functions/login" method="POST">
+  <input type="text" name="accesscode" id="accesscode">
   <input type="submit">
 </form>
+
+<script>
+  let accessCode = document.getElementById("accesscode");
+  document.getElementById("login").addEventListener("submit", function(event) {
+    fetch('/.netlify/functions/login', {method: "POST", body:"accesscode="+accessCode})
+      .then(response => response.text())
+      .then(data => location.href=data);
+    
+    event.preventDefault();
+  });
+</script>
