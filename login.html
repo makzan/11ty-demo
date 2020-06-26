@@ -10,7 +10,7 @@ Please login to access gated content.
 </form>
 
 <script>
-  let accessCode = document.getElementById("accesscode");
+  let accessCode = document.getElementById("accesscode").value;
   document.getElementById("login").addEventListener("submit", function(event) {
     fetch('/.netlify/functions/login', {method: "POST", body:"accesscode="+accessCode})
       .then(response => response.text())
