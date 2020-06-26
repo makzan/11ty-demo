@@ -9,8 +9,14 @@ exports.handler = (event, context, callback) => {
   console.log("---Form Data---");
   console.log(event.body)
   
+  result = "/"
+  
+  if (event.body == "accesscode=demo") {
+    result = "/super-long-url-here-to-hide-the-gated-content/"
+  }
+  
   callback(null, {
     statusCode: 200,
-    body: "Response from login"
+    body: result
   });
 }
