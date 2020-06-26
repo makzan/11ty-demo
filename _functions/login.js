@@ -15,12 +15,8 @@ exports.handler = (event, context, callback) => {
     result = "/super-long-url-here-to-hide-the-gated-content/"
   }
   
-  context.succeed({
-    location : result
+  callback(null, {
+    statusCode: 200,
+    body: result
   });
-  
-//   callback(null, {
-//     statusCode: 200,
-//     body: result
-//   });
 }
